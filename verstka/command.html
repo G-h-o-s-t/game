@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>BIO HAZARG регистрация</title>
+<style type="text/css">
+    @font-face {font-family: MyriadPro; src: url(fonts/MyriadPro-Regular.woff); font-style: normal; }
+    @font-face {font-family: MyriadPro; src: url(fonts/MyriadPro-It.woff); font-style: italic;}
+    @font-face {font-family: MyriadPro; src: url(fonts/MyriadPro-Semibold.woff); font-weight: bold; font-style: normal; }
+    @font-face {font-family: Febrotesk4; src: url(fonts/Febrotesk4FUnicase-Bold.woff);  font-style: normal;}
+
+    html, body{ margin: 0; padding: 0; background: #15181d; color: #747475; font-family: MyriadPro, "Myriad Pro", Arial, sans-serif; }
+    .clear{ display: block; height: 0; clear: both;}
+    .fl{ float: left;}
+    .fr{ float: right;}
+    .center{ width: 1400px; margin: auto;}
+    ul{ list-style-type: none; margin: 0; padding: 0;}
+
+/* header */
+    header{ position: relative; }
+    .main a i{ display: block; float: left; width: 19px; height: 19px;}
+    .main{ display: block; height: 50px;  background: #15181d; line-height: 50px;}
+    .main a{ display: block; line-height:50px; text-decoration: none; color: #747475; font-family: MyriadPro; font-style: normal; font-weight: normal; font-size: 15px; float: left; }
+    .main a:hover{ background: #000; color: #fff;}
+    .main a span{position: relative;top: 2px;}
+    .rules,.games,.mapIco{ width: 148px; border-right: 1px solid #1f2125; }
+    .mapIco:hover>i{ background-position:-23px -23px; }
+    .home.ico{ background: url("img/sprite.png") 0 0 no-repeat; display: inline-block;margin: 15px 61px 16px 20px;}
+    .mainIco:hover>i{ background-position: 0 -23px; }
+    .map.ico{ background: url("img/sprite.png") -23px 0 no-repeat; margin-top: 15px; margin-left: 40px; margin-right: 5px; }
+    .mapgames{background: url("img/sprite.png") -46px 0 no-repeat; margin-top: 15px; margin-left: 40px; margin-right: 5px; }
+    .maprules{background: url("img/sprite.png") -69px 0 no-repeat; margin-top: 15px; margin-left: 40px; margin-right: 5px; }
+    .games:hover>i{ background-position:-46px -23px; }
+    .rules:hover>i{ background-position:-69px -23px; }
+    .logo{ width: 201px; height: 26px; position: absolute; left: 50%; margin-left: -100px; background:url("img/sprite.png") -149px 0 no-repeat; top: 12px; }
+
+/* personal Cab */
+    .logout{ display: block; width: 50px; height: 50px; cursor: pointer;}
+    .exitIco{ display: block; width: 13px; height: 13px; background: url("img/sprite.png") -95px -43px no-repeat; margin: 19px 0 0 20px;}
+    .logout:hover>.exitIco{ background-position: -95px -60px;}
+    .teamName{ font-family:Febrotesk4; font-size: 25px; color: #fff; margin-right: 10px; }
+    .teamLogo{ width: 39px; height: 39px; line-height: 38px; font-family: Febrotesk4; color: #fff; font-size: 17px; background: url("img/sprite.png") no-repeat; text-align: center; margin: 7px 20px 0 0; }
+    .teamLogo.yellow{ background-position: 0 -251px; }
+    .teamLogo.green{ background-position: -43px -251px; }
+    .teamLogo.blue{ background-position: -86px -251px; }
+    .teamLogo.pink{ background-position: -129px -251px; }
+    .teamLogo.orange{ background-position: -172px -251px; }
+    .teamLogo.dorange{ background-position: -273px -251px; }
+/* personal Cab */
+/*columns*/
+    .wrapDark{background: #2f3339; width: 550px; color: #d6d6d6;  position: relative;}
+    .wrapDark .wrapLight {background: #eee; width: 850px; position: relative; left: 550px;   }
+    .content{position: relative; left: -550px; width: 1400px;  }
+    .leftside{ width: 550px; color: #d6d6d6; }
+    .rightside{ width: 850px; color: #2f3339;}
+    h3{ font-family:Febrotesk4; font-size: 35px; text-align: center; margin: 20px 0; line-height: 35px; margin: 20px 0 35px 0; }
+/* left Side*/
+    .divider{ color: #4a4b4d; border-top: 1px solid #4a4b4d; position: relative; width: 100%; text-align: center; clear: both; font-size: 13px; font-weight: bold;}
+    .divider span{ position: relative; top: -7px; background: #2f3339; padding: 0 15px;}
+    section{ font-weight: normal; color: #FFF; font-size: 13px; padding-top: 10px; }
+    .fieldBig{ border: 0; background: #000; color: #fff; height: 29px; line-height: 29px; width: 200px; padding: 0 10px; margin-top: 5px;}
+    .fieldSmall{border: 0; background: #000; color: #fff; height: 29px; line-height: 29px; width: 57px; padding: 0 10px; margin-top: 5px;}
+    #title{ margin-right: 17px;}
+    .bc{ width: 315px; margin: auto;}
+    .sc{ width: 215px; margin: auto; padding-bottom: 15px; position: relative }
+    .colorDescr{ margin-top: 20px;}
+    .colorSelect{ padding-top: 7px; text-align: justify; -ms-text-justify: distribute-all-lines; text-justify: distribute-all-lines; height: 55px; }
+    .colorSelect:after { content: '';width: 100%; display: inline-block;font-size: 0;line-height: 0 }
+    .colorSelect span{ display: inline-block; width: 30px; height: 30px; background: url("img/sprite.png") no-repeat;  *display: inline; zoom: 1; cursor: pointer;}
+    .colorSelect .yellow{ background-position: 0 -46px; }
+    .colorSelect .green{ background-position: -57px -46px; }
+    .colorSelect .blue{ background-position: -114px -46px; }
+    .colorSelect .pink{ background-position: -172px -46px; }
+    .colorSelect .orange{ background-position: -229px -46px; }
+    .colorSelect .dorange{ background-position: -285px -46px; }
+    .colorSelect .yellow:hover, .colorSelect .yellow.selected{ background-position: 0 -81px; }
+    .colorSelect .green:hover, .colorSelect .green.selected{ background-position: -57px -81px; }
+    .colorSelect .blue:hover,.colorSelect .blue.selected{ background-position: -114px -81px; }
+    .colorSelect .pink:hover,.colorSelect .pink.selected{ background-position: -172px -81px; }
+    .colorSelect .orange:hover,.colorSelect .orange.selected{ background-position: -229px -81px; }
+    .colorSelect .dorange:hover,.colorSelect .dorange.selected{ background-position: -285px -81px; }
+
+    .mainicoplace{ width: 100%; text-align: center; height: 78px;}
+    .showPass{display: block; width: 24px; height: 19px; position: absolute; background: url("img/sprite.png") -115px 0 no-repeat; right: 0; top: 10px; cursor: pointer;}
+    .showPass.selected{background-position: -325px -217px;}
+    .showPass.selected:hover{background-position: -325px -238px;}
+    .showPass:hover{ background-position: -115px -23px;}
+    .mainIcon{ display: inline-block; width: 47px; height: 47px; background: url("img/sprite.png") -23px -115px no-repeat;text-align: center; line-height: 47px; }
+    .titlefl{ display: inline-block; font-family:Febrotesk4; font-size: 29px; margin-left: 10px; position: relative; top: 2px }
+    .personal{ padding-bottom: 20px;}
+    .createTeam{display: block;margin: 20px auto;background: #F00;border: 0;color: #000;font-family: Febrotesk4;font-size: 20px;width: 220px; cursor: pointer; }
+    .createTeam:hover{ color: #fff;}
+    .passwrap{position: relative}
+
+    /*li*/
+    .team{ list-style-type: none; padding: 0 32px 0 50px; }
+    .team li{ margin: 0px 17px 24px 0; padding: 0; display: block; float: left; width: 175px; height: 237px; background: #2f3339; color: #d6d6d6; }
+    .rang{ width: 100%; text-align: center; margin: 15px 0 12px; font-size: 14px; text-transform: uppercase;}
+    .face{ width: 66px; height: 69px; margin: auto; margin-bottom: 16px;   }
+    .cap{background: url("img/sprite.png") 0 -165px  no-repeat; }
+    .solder{background: url("img/sprite.png") -71px -165px  no-repeat; }
+    .team input{ width: 138px;border: 0; background: #000; color: #FFF; height: 29px; line-height: 29px; padding: 0 10px; display: block; margin: 0 auto 7px auto; }
+    .saveMember{display: block; margin: 10px auto; background: #7f8183; border: 0; color: #2f3339; font-family: Febrotesk4; font-size: 15px; width: 90px; cursor: pointer;}
+    .saveMember:hover{ background-color: #e62035;}
+    .saveMember.saved{ background-color: #444;}
+    .plus{ width: 82px; height: 81px; margin: 75px auto 0; background: url("img/sprite.png") -149px -165px no-repeat; cursor: pointer;  }
+    .add{ cursor: pointer;}
+/* left Side*/
+/* rightSide*/
+
+</style>
+    <script type="text/javascript" src="js/dependencies/jquery.js"></script>
+</head>
+<body>
+<header>
+    <nav class="main center">
+        <a href="/" class="mainIco"><i class="home ico"></i></a>
+        <a href="/map" class="mapIco"><i class="map ico"></i><span> Карта</span></a>
+        <a href="/games" class="games selected"><i class="mapgames"></i><span> Игры</span></a>
+        <a href="/rules" class="rules"><i class="maprules"></i><span> Правила</span></a>
+        <div class="logo"></div>
+        <div class="personalCab fr">
+            <div class="fl teamLogo yellow">GRD</div>
+            <div class="fl teamName">guardians</div>
+            <a class="logout fl" href="#"><ins class="exitIco"></ins></a>
+        </div>
+    </nav>
+</header>
+
+<div class="center">
+    <div class="wrapDark">
+        <div class="wrapLight">
+            <div class="content">
+                <div class="leftside fl">
+                    <h3>Команда</h3>
+                    <form action="/command/create" method="post">
+                        <div class="divider"> <span>Идентификация</span> </div>
+                        <section>
+                            <div class="bc">
+                                <div class="ls fl">
+                                     <label for="title">Название</label><br/>
+                                     <input type="text" name="title" id="title" class="fieldBig">
+                                 </div>
+                                <div class="rs fl">
+                                    <label for="shortcut">Сокращение</label><br/>
+                                    <input type="text" name="shortcut" id="shortcut" class="fieldSmall" maxlength="3">
+                                </div>
+                                <i class="clear"></i>
+                                <div class="colorDescr">
+                                    Цвет идентификации
+                                </div>
+                                <div class="colorSelect">
+                                    <span class="yellow selected"></span>
+                                    <span class="green"></span>
+                                    <span class="blue"></span>
+                                    <span class="pink"></span>
+                                    <span class="orange"></span>
+                                    <span class="dorange"></span>
+                                </div>
+                                <i class="clear"></i>
+                                <div class="line mainicoplace">
+                                    <div class="mainIcon">GRD</div>
+                                    <div class="titlefl">GUARDIANS</div>
+                                </div>
+                            </div>
+                            <i class="clear"></i>
+                        </section>
+                        <div class="divider"> <span>Коммуникация</span> </div>
+
+                        <section class="personal">
+                            <div class="sc">
+                                <label for="email">E-mail</label><br/>
+                                <input type="text" name="email" id="email" class="fieldBig">
+                            </div>
+                            <div class="sc">
+                                <label for="phone">Телефон</label><br/>
+                                <input type="text" name="phone" id="phone" class="fieldBig">
+                            </div>
+                        </section>
+                        <div class="divider"> <span>Безопасность</span></div>
+                        <section>
+                            <div class="sc">
+                                <label for="passwd">Пароль</label><br/>
+                                <div class="passwrap">
+                                    <input type="password" name="пароль" id="passwd" class="fieldBig">
+                                    <i class="showPass"></i>
+                                </div>
+                                <button class="createTeam">создать команду</button>
+                            </div>
+                        </section>
+                    </form>
+
+
+                    <i class="clear"></i>
+                </div>
+                <aside class="rightside fr">
+                    <h3>Состав</h3>
+                    <ul class="team">
+                        <li>
+                           <div class="rang">Капитан</div>
+                           <div class="face cap"> </div>
+                            <input type="text" class="nick" value="" placeholder="Позывной*"/>
+                            <input type="text" class="email" value="" placeholder="E-mail*"/>
+                            <button class="saveMember saved">Добавить</button>
+                        </li>
+                        <li>
+                            <div class="rang">солдат</div>
+                            <div class="face solder"> </div>
+                            <input type="text" class="nick" value="" placeholder="Позывной*"/>
+                            <input type="text" class="email" value="" placeholder="E-mail*"/>
+                            <button class="saveMember">Сохранить</button>
+                        </li>
+                        <li>
+                            <div class="rang">Капитан</div>
+                            <div class="face"> </div>
+                            <input type="text" class="nick" value="" placeholder="Позывной*"/>
+                            <input type="text" class="email" value="" placeholder="E-mail*"/>
+                            <button class="saveMember">Добавить</button>
+                        </li>
+                        <li>
+                            <div class="rang">Боец</div>
+                            <div class="face"> </div>
+                            <input type="text" class="nick" value="" placeholder="Позывной*"/>
+                            <input type="text" class="email" value="" placeholder="E-mail*"/>
+                            <button class="saveMember">Добавить</button>
+                        </li>
+                        <li>
+                            <div class="rang">солдат</div>
+                            <div class="face solder"> </div>
+                            <input type="text" class="nick" value="" placeholder="Позывной*"/>
+                            <input type="text" class="email" value="" placeholder="E-mail*"/>
+                            <button class="saveMember">Сохранить</button>
+                        </li>
+                        <li>
+                            <div class="rang">Капитан</div>
+                            <div class="face"> </div>
+                            <input type="text" class="nick" value="" placeholder="Позывной*"/>
+                            <input type="text" class="email" value="" placeholder="E-mail*"/>
+                            <button class="saveMember">Добавить</button>
+                        </li>
+                        <li>
+                            <div class="rang">Боец</div>
+                            <div class="face"> </div>
+                            <input type="text" class="nick" value="" placeholder="Позывной*"/>
+                            <input type="text" class="email" value="" placeholder="E-mail*"/>
+                            <button class="saveMember">Добавить</button>
+                        </li>                        <li>
+                        <div class="rang">солдат</div>
+                        <div class="face solder"> </div>
+                        <input type="text" class="nick" value="" placeholder="Позывной*"/>
+                        <input type="text" class="email" value="" placeholder="E-mail*"/>
+                        <button class="saveMember">Сохранить</button>
+                    </li>
+                        <li>
+                            <div class="rang">Капитан</div>
+                            <div class="face"> </div>
+                            <input type="text" class="nick" value="" placeholder="Позывной*"/>
+                            <input type="text" class="email" value="" placeholder="E-mail*"/>
+                            <button class="saveMember">Добавить</button>
+                        </li>
+                        <li>
+                            <div class="rang">Боец</div>
+                            <div class="face"> </div>
+                            <input type="text" class="nick" value="" placeholder="Позывной*"/>
+                            <input type="text" class="email" value="" placeholder="E-mail*"/>
+                            <button class="saveMember">Добавить</button>
+                        </li>                        <li>
+                        <div class="rang">солдат</div>
+                        <div class="face solder"> </div>
+                        <input type="text" class="nick" value="" placeholder="Позывной*"/>
+                        <input type="text" class="email" value="" placeholder="E-mail*"/>
+                        <button class="saveMember">Сохранить</button>
+                    </li>
+                        <li>
+                            <div class="rang">Капитан</div>
+                            <div class="face"> </div>
+                            <input type="text" class="nick" value="" placeholder="Позывной*"/>
+                            <input type="text" class="email" value="" placeholder="E-mail*"/>
+                            <button class="saveMember">Добавить</button>
+                        </li>
+                        <li>
+                            <div class="rang">Боец</div>
+                            <div class="face"> </div>
+                            <input type="text" class="nick" value="" placeholder="Позывной*"/>
+                            <input type="text" class="email" value="" placeholder="E-mail*"/>
+                            <button class="saveMember">Добавить</button>
+                        </li>                        <li>
+                        <div class="rang">солдат</div>
+                        <div class="face solder"> </div>
+                        <input type="text" class="nick" value="" placeholder="Позывной*"/>
+                        <input type="text" class="email" value="" placeholder="E-mail*"/>
+                        <button class="saveMember">Сохранить</button>
+                    </li>
+                        <li>
+                            <div class="rang">Капитан</div>
+                            <div class="face"> </div>
+                            <input type="text" class="nick" value="" placeholder="Позывной*"/>
+                            <input type="text" class="email" value="" placeholder="E-mail*"/>
+                            <button class="saveMember">Добавить</button>
+                        </li>
+                        <li>
+                            <div class="rang">Боец</div>
+                            <div class="face"> </div>
+                            <input type="text" class="nick" value="" placeholder="Позывной*"/>
+                            <input type="text" class="email" value="" placeholder="E-mail*"/>
+                            <button class="saveMember">Добавить</button>
+                        </li>                        <li>
+                        <div class="rang">солдат</div>
+                        <div class="face solder"> </div>
+                        <input type="text" class="nick" value="" placeholder="Позывной*"/>
+                        <input type="text" class="email" value="" placeholder="E-mail*"/>
+                        <button class="saveMember">Сохранить</button>
+                    </li>
+                        <li>
+                            <div class="rang">Капитан</div>
+                            <div class="face"> </div>
+                            <input type="text" class="nick" value="" placeholder="Позывной*"/>
+                            <input type="text" class="email" value="" placeholder="E-mail*"/>
+                            <button class="saveMember">Добавить</button>
+                        </li>
+                        <li>
+                            <div class="rang">Боец</div>
+                            <div class="face"> </div>
+                            <input type="text" class="nick" value="" placeholder="Позывной*"/>
+                            <input type="text" class="email" value="" placeholder="E-mail*"/>
+                            <button class="saveMember">Добавить</button>
+                        </li>                        <li>
+                        <div class="rang">солдат</div>
+                        <div class="face solder"> </div>
+                        <input type="text" class="nick" value="" placeholder="Позывной*"/>
+                        <input type="text" class="email" value="" placeholder="E-mail*"/>
+                        <button class="saveMember">Сохранить</button>
+                    </li>
+                        <li>
+                            <div class="rang">Капитан</div>
+                            <div class="face"> </div>
+                            <input type="text" class="nick" value="" placeholder="Позывной*"/>
+                            <input type="text" class="email" value="" placeholder="E-mail*"/>
+                            <button class="saveMember">Добавить</button>
+                        </li>
+                        <li>
+                            <div class="rang">Боец</div>
+                            <div class="face"> </div>
+                            <input type="text" class="nick" value="" placeholder="Позывной*"/>
+                            <input type="text" class="email" value="" placeholder="E-mail*"/>
+                            <button class="saveMember">Добавить</button>
+                        </li>
+                        <li class="add">
+                            <div class="plus"></div>
+                        </li>
+                    </ul>
+                    <i class="clear"></i>
+                </aside>
+                <i class="clear"></i>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+(function($) {
+
+})(jQuery);
+</script>
+</body>
+</html>
