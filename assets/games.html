@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>BIO HAZARG игры</title>
+<style type="text/css">
+    @font-face {font-family: MyriadPro; src: url(fonts/MyriadPro-Regular.woff); font-style: normal; }
+    @font-face {font-family: MyriadPro; src: url(fonts/MyriadPro-It.woff); font-style: italic;}
+    @font-face {font-family: MyriadPro; src: url(fonts/MyriadPro-Semibold.woff); font-weight: bold; font-style: normal; }
+    @font-face {font-family: Febrotesk4; src: url(fonts/Febrotesk4FUnicase-Bold.woff);  font-style: normal;}
+
+    html, body{ margin: 0; padding: 0; background: #15181d; color: #747475; font-family: MyriadPro, "Myriad Pro", Arial, sans-serif; }
+    .clear{ display: block; height: 0; clear: both;}
+    .fl{ float: left;}
+    .fr{ float: right;}
+    .center{ width: 1400px; margin: auto;}
+    ul{ list-style-type: none; margin: 0; padding: 0;}
+    h3{ font-family:Febrotesk4; font-size: 35px; text-align: center; margin: 20px 0; }
+/* header */
+    header{ position: relative; }
+    .main a i{ display: block; float: left; width: 19px; height: 19px;}
+    .main{ display: block; height: 50px;  background: #15181d; line-height: 50px;}
+    .main a{ display: block; line-height:50px; text-decoration: none; color: #747475; font-family: MyriadPro; font-style: normal; font-weight: normal; font-size: 15px; float: left; }
+    .main a:hover{ background: #000; color: #fff;}
+    .main a span{position: relative;top: 2px;}
+    .rules,.games,.mapIco{ width: 148px; border-right: 1px solid #1f2125; }
+    .mapIco:hover>i{ background-position:-23px -23px; }
+    .home.ico{ background: url("img/sprite.png") 0 0 no-repeat; display: inline-block;margin: 15px 61px 16px 20px;}
+    .mainIco:hover>i{ background-position: 0 -23px; }
+    .map.ico{ background: url("img/sprite.png") -23px 0 no-repeat; margin-top: 15px; margin-left: 40px; margin-right: 5px; }
+    .mapgames{background: url("img/sprite.png") -46px 0 no-repeat; margin-top: 15px; margin-left: 40px; margin-right: 5px; }
+    .maprules{background: url("img/sprite.png") -69px 0 no-repeat; margin-top: 15px; margin-left: 40px; margin-right: 5px; }
+    .games:hover>i{ background-position:-46px -23px; }
+    .rules:hover>i{ background-position:-69px -23px; }
+    .logo{ width: 201px; height: 26px; position: absolute; left: 50%; margin-left: -100px; background:url("img/sprite.png") -149px 0 no-repeat; top: 12px; }
+
+/* personal Cab */
+    .logout{ display: block; width: 50px; height: 50px; cursor: pointer;}
+    .exitIco{ display: block; width: 13px; height: 13px; background: url("img/sprite.png") -95px -43px no-repeat; margin: 19px 0 0 20px;}
+    .logout:hover>.exitIco{ background-position: -95px -60px;}
+    .teamName{ font-family:Febrotesk4; font-size: 25px; color: #fff; margin-right: 10px; }
+    .teamLogo{ width: 39px; height: 39px; line-height: 39px; font-family: Febrotesk4; color: #fff; font-size: 17px; background: url("img/sprite.png") no-repeat; text-align: center; margin: 7px 20px 0 0; }
+    .teamLogo.yellow{ background-position: 0 -251px; }
+    .teamLogo.green{ background-position: -43px -251px; }
+    .teamLogo.blue{ background-position: -86px -251px; }
+    .teamLogo.pink{ background-position: -129px -251px; }
+    .teamLogo.orange{ background-position: -172px -251px; }
+    .teamLogo.dorange{ background-position: -273px -251px; }
+/* personal Cab */
+/*columns*/
+    .wrapLight{background: #eee; width: 900px; color: #1f2328;  position: relative;}
+    .wrapLight .wrapDark{background: #2f3339; width: 500px; position: relative; left: 900px; color: #eee;  }
+    .content{position: relative; left: -900px; width: 1400px;  }
+    .rightside{ width: 500px; }
+/* left Side*/
+    /* slider */
+    .leftside{ background: #eee; width: 900px; color: #1f2328; }
+    .gamesSlider{ position: relative;}
+    .jcarousel{ width: 800px; height: 220px; margin: auto; position: relative; overflow: hidden; }
+    .events li{  padding: 12px; float: left; margin: 0; width: 176px; height: 196px; }
+    .events li.selected{ background-color: #2f3339; color: #eee;}
+    .events li:hover{ cursor: pointer;background-color: #747475; color: #eee;}
+    .status{ text-align: center; font-family: MyriadPro, Arial, sans-serif; font-weight: bold; font-size: 13px; margin-bottom: 15px; }
+    .gameTitile{ font-family: Febrotesk4; font-size: 14px; margin:6px 0 10px; font-size: 20px;  }
+    .gameTitile.selected{ color: red; }
+    .gameDate{ font-family: MyriadPro; font-size: 13px; font-style: italic;}
+    .events{ position: absolute}
+    .jcarousel-control-prev{ display: block; width: 15px; height: 50px; background: url("img/sprite.png") -234px -165px no-repeat; position: absolute; left: 10px; top :50px; position: absolute; left: 21px; top: 136px; }
+    .jcarousel-control-prev:hover{ background-position: -234px -220px; }
+    .jcarousel-control-next{display: block; width: 15px; height: 50px; background: url("img/sprite.png") -254px -165px no-repeat; position: absolute; right: 21px; top: 136px; }
+    .jcarousel-control-next:hover{ background-position: -254px -220px; }
+    .jcarousel-pagination{ text-align: center;}
+    .jcarousel-pagination a { text-indent: -9999px; text-decoration: none; display: inline-block; height: 12px; width: 12px; background: #878787; border-radius: 7px; margin: 3px; }
+    .jcarousel-pagination a.active{ background-color: #e91a33}
+
+    /* descr */
+    .describeGame {border-top: 1px solid #e7e7e7; }
+    .gameImage{ margin-left: 61px;}
+    .gameDescr{ width: 408px; font-size: 13px; margin: 0 50px 40px 0; }
+    .line {clear: both; margin-bottom: 15px;}
+    .descTitle{ font-weight: bold; width: 71px; text-align: right; margin-right: 20px; float: left;}
+    .descDetail{ float: right; width: 315px; }
+    .descDetail a{ color: #097289;}
+/* left Side*/
+/* rightSide*/
+    .divider{ color: #4a4b4d; border-top: 1px solid #4a4b4d; position: relative; width: 100%; text-align: center; clear: both;}
+    .divider span{ position: relative; top: -10px; background: #2f3339; padding: 0 15px;}
+    .scoreBoard{ margin: 20px 0 30px}
+    .scoreLine{ clear: both; height: 46px; margin-bottom: 13px; }
+    .teamTitle{ width: 145px; float: left; line-height: 46px; height: 46px; text-align: right;}
+    .teamTitler{ width: 145px; float: left; line-height: 46px; height: 46px; text-align: left;}
+    .teamCirq{ width: 46px; height: 46px; margin: 0 16px 0 16px; background: url("img/sprite.png") no-repeat; text-align: center; line-height: 43px; font-family: Febrotesk4; font-size: 20px; }
+    .score{  height:23px; width: 50px; float: left; background: #000; margin: 11px 2px 2px 2px; text-align: center; font-family: Febrotesk4; font-size: 20px; line-height:20px;  }
+
+    .scoreLine.yellow .teamCirq{ background-position: -23px -115px; }
+    .scoreLine.yellow .score.selected{ border: 2px solid #deb613; margin: 9px 0 0 0; }
+    .scoreLine.blue .teamCirq{ background-position: -123px -115px; }
+    .scoreLine.blue .score.selected{ border: 2px solid #2e8ece; margin: 9px 0 0 0; }
+
+    .scoreLine.pink .teamCirq{ background-position: -173px -115px; }
+    .scoreLine.pink .score.selected{ border: 2px solid #9241b5; margin: 9px 0 0 0; }
+
+    .scoreLine.green .teamCirq{ background-position: -73px -115px; }
+    .scoreLine.green .score.selected{ border: 2px solid #3cb670; margin: 9px 0 0 0; }
+    .scoreLine.orange .teamCirq{ background-position: -223px -115px; }
+    .scoreLine.orange .score.selected{ border: 2px solid #f38612; margin: 9px 0 0 0; }
+    .scoreLine.dorange .teamCirq{ background-position: -273px -115px; }
+    .scoreLine.dorange .score.selected{ border: 2px solid #d35400; margin: 9px 0 0 0; }
+
+</style>
+    <script type="text/javascript" src="js/dependencies/jquery.js"></script>
+    <script type="text/javascript" src="js/dependencies/jquery.jcarousel.min.js"></script>
+</head>
+<body>
+<header>
+    <nav class="main center">
+        <a href="/" class="mainIco"><i class="home ico"></i></a>
+        <a href="/map" class="mapIco"><i class="map ico"></i><span> Карта</span></a>
+        <a href="/games" class="games selected"><i class="mapgames"></i><span> Игры</span></a>
+        <a href="/rules" class="rules"><i class="maprules"></i><span> Правила</span></a>
+        <div class="logo"></div>
+        <div class="personalCab fr">
+            <div class="fl teamLogo yellow">GRD</div>
+            <div class="fl teamName">guardians</div>
+            <a class="logout fl" href="#"><ins class="exitIco"></ins></a>
+        </div>
+    </nav>
+</header>
+
+<div class="center">
+    <div class="wrapLight">
+        <div class="wrapDark">
+            <div class="content">
+                <div class="leftside fl">
+                    <section class="gamesSlider">
+                        <h3>Игры</h3>
+                        <div class="jcarousel-wrapper">
+                            <div class="jcarousel">
+                                <ul class="events">
+                                    <li data-gameId="01">
+                                        <div class="status">Завершенная</div>
+                                        <img src="img/game.png" alt="игра 1"/>
+                                        <div class="gameTitile">ЗОНА 51</div>
+                                        <div class="gameDate">30 февраля 2015</div>
+                                    </li>
+                                    <li data-gameId="02" class="selected">
+                                        <div class="status">Следущая</div>
+                                        <img src="img/game.png" alt="игра 1"/>
+                                        <div class="gameTitile selected">ЗОНА 52</div>
+                                        <div class="gameDate">30 февраля 2015</div>
+                                    </li>
+                                    <li data-gameId="03">
+                                        <div class="status">Скоро</div>
+                                        <img src="img/game.png" alt="игра 1"/>
+                                        <div class="gameTitile">ЗОНА 53</div>
+                                        <div class="gameDate">30 февраля 2015</div>
+                                    </li>
+                                    <li data-gameId="04">
+                                        <div class="status">Следущая</div>
+                                        <img src="img/game.png" alt="игра 1"/>
+                                        <div class="gameTitile">ЗОНА 54</div>
+                                        <div class="gameDate">30 февраля 2015</div>
+                                    </li>
+                                    <li data-gameId="05">
+                                        <div class="status">Следущая</div>
+                                        <img src="img/game.png" alt="игра 1"/>
+                                        <div class="gameTitile">ЗОНА 55</div>
+                                        <div class="gameDate">30 февраля 2015</div>
+                                    </li>
+                                    <li data-gameId="06">
+                                        <div class="status">Следущая</div>
+                                        <img src="img/game.png" alt="игра 1"/>
+                                        <div class="gameTitile">ЗОНА 56</div>
+                                        <div class="gameDate">30 февраля 2015</div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <a href="#" class="jcarousel-control-prev"></a>
+                            <a href="#" class="jcarousel-control-next"></a>
+                            <p class="jcarousel-pagination"></p>
+                        </div>
+                        <i class="clear"></i>
+                    </section>
+                    <section class="describeGame">
+                        <h3>Описание</h3>
+                        <div class="fl gameImage">
+                            <img src="img/map.png" alt="картинка игры"/>
+                        </div>
+                        <div class="fr gameDescr">
+                            <div class="line">
+                                <div class="descTitle">Название:</div>
+                                <div class="descDetail">Зона 51</div>
+                                <i class="clear"></i>
+                            </div>
+                            <div class="line">
+                                <div class="descTitle">Адрес:</div>
+                                <div class="descDetail">л. Большая Академическая, 38</div>
+                                <i class="clear"></i>
+                            </div>
+                            <div class="line">
+                                <div class="descTitle">Время:</div>
+                                <div class="descDetail">с 10:00 до 16:00</div>
+                                <i class="clear"></i>
+                            </div>
+                            <div class="line">
+                                <div class="descTitle">Телефон:</div>
+                                <div class="descDetail">8 903 456 78 90</div>
+                                <i class="clear"></i>
+                            </div>
+                            <div class="line">
+                                <div class="descTitle">Сайт:</div>
+                                <div class="descDetail"><a href="http://www.zona51.ru">www.zona51.ru</a></div>
+                                <i class="clear"></i>
+                            </div>
+                            <div class="descText">
+                                Клуб «Зона 51» назван в честь одноименного животного, и находится на территории стадиона «Наука». Проехать своим ходом к нам можно от метро Петровско-Разумовская или Войковская, множество спортивных площадок.
+                                сыграть в пейнтбол в Москве возможно и на Севере! В клубе имеется 2 карты: «Бастион» и «Стронгхолд», на которых можно сыграть множество интереснейших сценариев. Вместимость полей до 60 игроков. На площадках
+                                построены вышки, мостики, крепости, как обычно, мы готовы предложить вам игры на отличных площадках!
+                            </div>
+                        </div>
+                    </section>
+                    <i class="clear"></i>
+                </div>
+                <aside class="rightside fr">
+                    <h3>Сражения</h3>
+                    <div class="divider"> <span>атака</span> </div>
+                    <section class="scoreBoard">
+                        <div class="scoreLine yellow">
+                            <div class="teamTitle">Guardians</div>
+                            <div class="fl teamCirq">GRD</div>
+                            <div class="score selected">0:0</div>
+                            <div class="fl teamCirq">GRD</div>
+                            <div class="teamTitler">Guardians</div>
+                        </div>
+                        <div class="scoreLine pink">
+                            <div class="teamTitle">Клан Сопрано</div>
+                            <div class="fl teamCirq">КЛС</div>
+                            <div class="score selected)">0:0</div>
+                            <div class="fl teamCirq">КЛС</div>
+                            <div class="teamTitler">Клан Сопрано</div>
+                        </div>
+                        <div class="scoreLine green">
+                            <div class="teamTitle">Клан Сопрано</div>
+                            <div class="fl teamCirq">КЛС</div>
+                            <div class="score selected)">0:0</div>
+                            <div class="fl teamCirq">КЛС</div>
+                            <div class="teamTitler">Клан Сопрано</div>
+                        </div>
+                        <div class="scoreLine orange">
+                            <div class="teamTitle">Клан Сопрано</div>
+                            <div class="fl teamCirq">КЛС</div>
+                            <div class="score selected">0:0</div>
+                            <div class="fl teamCirq">КЛС</div>
+                            <div class="teamTitler">Клан Сопрано</div>
+                        </div>
+                        <div class="scoreLine blue">
+                            <div class="teamTitle">Клан Сопрано</div>
+                            <div class="fl teamCirq">КЛС</div>
+                            <div class="score selected)">0:0</div>
+                            <div class="fl teamCirq">КЛС</div>
+                            <div class="teamTitler">Клан Сопрано</div>
+                        </div>
+                        <div class="scoreLine dorange">
+                            <div class="teamTitle">Клан Сопрано</div>
+                            <div class="fl teamCirq">КЛС</div>
+                            <div class="score selected)">0:0</div>
+                            <div class="fl teamCirq">КЛС</div>
+                            <div class="teamTitler">Клан Сопрано</div>
+                        </div>
+
+                    </section>
+                    <div class="divider"> <span>захват</span> </div>
+                    <section class="scoreBoard">
+                        <div class="scoreLine yellow">
+                            <div class="teamTitle">Guardians</div>
+                            <div class="fl teamCirq">GRD</div>
+                            <div class="score selected">0:0</div>
+                            <div class="fl teamCirq">GRD</div>
+                            <div class="teamTitler">Guardians</div>
+                        </div>
+                        <div class="scoreLine pink">
+                            <div class="teamTitle">Клан Сопрано</div>
+                            <div class="fl teamCirq">КЛС</div>
+                            <div class="score selected)">0:0</div>
+                            <div class="fl teamCirq">КЛС</div>
+                            <div class="teamTitler">Клан Сопрано</div>
+                        </div>
+                        <div class="scoreLine green">
+                            <div class="teamTitle">Клан Сопрано</div>
+                            <div class="fl teamCirq">КЛС</div>
+                            <div class="score selected)">0:0</div>
+                            <div class="fl teamCirq">КЛС</div>
+                            <div class="teamTitler">Клан Сопрано</div>
+                        </div>
+                        <div class="scoreLine orange">
+                            <div class="teamTitle">Клан Сопрано</div>
+                            <div class="fl teamCirq">КЛС</div>
+                            <div class="score selected">0:0</div>
+                            <div class="fl teamCirq">КЛС</div>
+                            <div class="teamTitler">Клан Сопрано</div>
+                        </div>
+                        <div class="scoreLine blue">
+                            <div class="teamTitle">Клан Сопрано</div>
+                            <div class="fl teamCirq">КЛС</div>
+                            <div class="score selected)">0:0</div>
+                            <div class="fl teamCirq">КЛС</div>
+                            <div class="teamTitler">Клан Сопрано</div>
+                        </div>
+                        <div class="scoreLine dorange">
+                            <div class="teamTitle">Клан Сопрано</div>
+                            <div class="fl teamCirq">КЛС</div>
+                            <div class="score selected)">0:0</div>
+                            <div class="fl teamCirq">КЛС</div>
+                            <div class="teamTitler">Клан Сопрано</div>
+                        </div>
+
+                    </section>
+                    <i class="clear"></i>
+                </aside>
+                <i class="clear"></i>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+(function($) {
+    $(function() {
+        var jcarousel = $('.jcarousel');
+
+        jcarousel.on('jcarousel:reload jcarousel:create', function () {
+//                    var width = jcarousel.innerWidth();
+//                    if (width >= 600) {
+//                        width = width / 3;
+//                    } else if (width >= 350) {
+//                        width = width / 2;
+//                    }
+//                    jcarousel.jcarousel('items').css('width', width + 'px');
+                })
+                .jcarousel({
+                    wrap: 'circular'
+                });
+
+        $('.jcarousel-control-prev').jcarouselControl({ target: '-=1' });
+        $('.jcarousel-control-next') .jcarouselControl({ target: '+=1' });
+        $('.jcarousel-pagination').on('jcarouselpagination:active', 'a',
+                function() {
+                    $(this).addClass('active');
+                })
+                .on('jcarouselpagination:inactive', 'a', function() {
+                    $(this).removeClass('active');
+                })
+                .on('click', function(e) {
+                    e.preventDefault();
+                })
+                .jcarouselPagination({
+                    perPage: 1,
+                    item: function(page) {
+                        return '<a href="#' + page + '">' + page + '</a>';
+                    }
+                });
+    });
+})(jQuery);
+</script>
+</body>
+</html>

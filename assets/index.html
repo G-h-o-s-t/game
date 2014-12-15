@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>BIO HAZARG регистрация</title>
+<style type="text/css">
+    @font-face {font-family: MyriadPro; src: url(fonts/MyriadPro-Regular.woff); font-style: normal; }
+    @font-face {font-family: MyriadPro; src: url(fonts/MyriadPro-It.woff); font-style: italic;}
+    @font-face {font-family: MyriadPro; src: url(fonts/MyriadPro-Semibold.woff); font-weight: bold; font-style: normal; }
+    @font-face {font-family: Febrotesk4; src: url(fonts/Febrotesk4FUnicase-Bold.woff);  font-style: normal;}
+
+    html, body{ margin: 0; padding: 0; background: #15181d; color: #747475; font-family: MyriadPro, "Myriad Pro", Arial, sans-serif; width: 100%; height: 100%; }
+    .clear{ display: block; height: 0; clear: both;}
+    .fl{ float: left;}
+    .fr{ float: right;}
+    .center{ width: 1400px; margin: auto;}
+    ul{ list-style-type: none; margin: 0; padding: 0;}
+
+/* header */
+    header{ position: fixed; background: #000; z-index: 100; top: 0; width: 100%;}
+    .main a i{ display: block; float: left; width: 19px; height: 19px;}
+    .main{ display: block; height: 50px;  background: #15181d; line-height: 50px;}
+    .main a{ display: block; line-height:50px; text-decoration: none; color: #747475; font-family: MyriadPro; font-style: normal; font-weight: normal; font-size: 15px; float: left; }
+    .main a:hover{ background: #000; color: #fff;}
+    .main a span{position: relative;top: 2px;}
+    .rules,.games,.mapIco{ width: 148px; border-right: 1px solid #1f2125; }
+    .mapIco:hover>i{ background-position:-23px -23px; }
+    .home.ico{ background: url("img/sprite.png") 0 0 no-repeat; display: inline-block;margin: 15px 61px 16px 20px;}
+    .mainIco:hover>i{ background-position: 0 -23px; }
+    .map.ico{ background: url("img/sprite.png") -23px 0 no-repeat; margin-top: 15px; margin-left: 40px; margin-right: 5px; }
+    .mapgames{background: url("img/sprite.png") -46px 0 no-repeat; margin-top: 15px; margin-left: 40px; margin-right: 5px; }
+    .maprules{background: url("img/sprite.png") -69px 0 no-repeat; margin-top: 15px; margin-left: 40px; margin-right: 5px; }
+    .games:hover>i{ background-position:-46px -23px; }
+    .rules:hover>i{ background-position:-69px -23px; }
+    .logo{ width: 201px; height: 26px; position: relative; float: left; margin-left: 52px; background: url("img/sprite.png") -149px 0 no-repeat; top: 12px; display: block;}
+/* header */
+/*bg*/
+    .back{ width: 100%; height: 100%; position: fixed; top: 0; left: 0;}
+    #bg1{ background: url("img/BG1.png") center center no-repeat; background-size: cover; opacity: 1; z-index: 1;}
+    #bg2{ background: url("img/BG2.png")0 0 no-repeat; background-size: cover; opacity: 0; z-index: 2;}
+    #bg3{ background: url("img/BG3.png")0 0 no-repeat; background-size: cover; opacity: 0; z-index: 3;}
+    #bg4{ background: url("img/BG4.png")0 0 no-repeat; background-size: cover; opacity: 0; z-index: 4;}
+/* BG*/
+/* Paginator */
+    .paginator{ display: block; position: fixed; left: 20px; top: 50%; margin-top: -60px; width: 22px; z-index: 200;}
+    .page{ width: 22px; height: 22px; background: url("img/sprite.png") -323px -130px no-repeat; cursor: pointer; margin-bottom: 10px; }
+    .page:hover{ background-position: -323px -105px; }
+    .page.selected{ background-position: -323px -81px; }
+     .heightMe{ height: 3900px;}
+</style>
+    <script type="text/javascript" src="js/dependencies/jquery.js"></script>
+    <script type="text/javascript" src="js/dependencies/jq.scrollorama.js"></script>
+</head>
+<body>
+<div class="blocks">
+    <div id="bg1" class="back"></div>
+    <div id="bg2" class="back"></div>
+    <div id="bg3" class="back"></div>
+    <div id="bg4" class="back"></div>
+</div>
+
+<header>
+    <nav class="main center">
+        <a href="/" class="mainIco"><i class="home ico"></i></a>
+        <a href="/map" class="mapIco"><i class="map ico"></i><span> Карта</span></a>
+        <a href="/games" class="games selected"><i class="mapgames"></i><span> Игры</span></a>
+        <a href="/rules" class="rules"><i class="maprules"></i><span> Правила</span></a>
+        <div class="logo"></div>
+        <div class="personalCab fr">
+            <div class="fl teamLogo yellow">GRD</div>
+            <div class="fl teamName">guardians</div>
+            <a class="logout fl" href="#"><ins class="exitIco"></ins></a>
+        </div>
+    </nav>
+</header>
+<div class="center">
+
+  <div class="heightMe"></div>
+</div>
+<aside class="paginator">
+    <div class="page selected" data-offset="0"></div>
+    <div class="page" data-offset="800"></div>
+    <div class="page" data-offset="1600"></div>
+    <div class="page" data-offset="2500"></div>
+</aside>
+<div id="db" style="position: fixed; z-index: 1000; color: #fff; top: 10px; right: 10px; border: 1px solid #fff; font-size: 15px; padding: 0 10px; line-height: 15px;">0</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    var
+         paralax = $.scrollorama({ blocks : '.blocks' });
+
+    paralax
+            .animate('#bg2',{  delay:0, duration:800, property: 'opacity', start : 0, end: 1 })
+            .animate('#bg3',{  delay:800, duration:800, property: 'opacity', start : 0, end: 1 })
+            .animate('#bg4',{  delay:1600, duration:800, property: 'opacity', start : 0, end: 1 });
+
+    $('.page').click(function () {
+        var $that = $(this);
+        $("html, body").animate({ scrollTop : $(this).attr('data-offset') }, '1200', function(){
+            $('.page').removeClass('selected');
+            $that.addClass('selected');
+        });
+    });
+
+    window.onscroll = function() {
+
+        var scrl = $(document).scrollTop();
+        document.getElementById('db').innerHTML = scrl;
+
+        if(scrl < 800 ) { $(".page").removeClass("selected"); $('.page[data-offset="0"]').addClass("selected"); }
+        if(scrl >= 800 && scrl < 1600 ) { $(".page").removeClass("selected"); $('.page[data-offset="800"]').addClass("selected"); }
+        if(scrl >= 1600 && scrl < 2500 ) { $(".page").removeClass("selected"); $('.page[data-offset="1600"]').addClass("selected"); }
+        if(scrl >= 2500 ) { $(".page").removeClass("selected"); $('.page[data-offset="2500"]').addClass("selected"); }
+    };
+
+
+});
+</script>
+</body>
+</html>
